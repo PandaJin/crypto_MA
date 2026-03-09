@@ -10,7 +10,7 @@ import {
   CartesianGrid,
   Cell,
 } from "recharts";
-import { COLORS } from "@/lib/utils/constants";
+import { COLORS, THEME_VARS } from "@/lib/utils/constants";
 
 interface CorrelationChartProps {
   labels: string[];
@@ -41,40 +41,40 @@ export default function CorrelationChart({
       <div className="flex items-center justify-center gap-6 pb-2 text-[11px]">
         <div className="flex items-center gap-1.5">
           <span className="inline-block w-3 h-3 rounded-sm" style={{ backgroundColor: COLORS.btc }} />
-          <span style={{ color: COLORS.muted }}>BTC月涨跌%</span>
+          <span style={{ color: THEME_VARS.muted }}>BTC月涨跌%</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="inline-block w-3 h-3 rounded-sm" style={{ backgroundColor: COLORS.eth }} />
-          <span style={{ color: COLORS.muted }}>ETH月涨跌%</span>
+          <span style={{ color: THEME_VARS.muted }}>ETH月涨跌%</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="inline-block w-3 h-3 rounded-sm" style={{ backgroundColor: "rgba(16,185,129,0.6)" }} />
-          <span style={{ color: COLORS.muted }}>上涨</span>
+          <span style={{ color: THEME_VARS.muted }}>上涨</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="inline-block w-3 h-3 rounded-sm" style={{ backgroundColor: "rgba(239,68,68,0.6)" }} />
-          <span style={{ color: COLORS.muted }}>下跌</span>
+          <span style={{ color: THEME_VARS.muted }}>下跌</span>
         </div>
       </div>
     <ResponsiveContainer width="100%" height="100%">
       <BarChart data={data}>
-        <CartesianGrid strokeDasharray="3 3" stroke={COLORS.border} />
+        <CartesianGrid strokeDasharray="3 3" stroke={THEME_VARS.border} />
         <XAxis
           dataKey="date"
-          tick={{ fontSize: 10, fill: COLORS.muted }}
+          tick={{ fontSize: 10, fill: THEME_VARS.muted }}
           tickLine={false}
           interval="preserveStartEnd"
         />
         <YAxis
-          tick={{ fontSize: 10, fill: COLORS.muted }}
+          tick={{ fontSize: 10, fill: THEME_VARS.muted }}
           tickFormatter={(v) => `${v}%`}
           tickLine={false}
           axisLine={false}
         />
         <Tooltip
           contentStyle={{
-            backgroundColor: COLORS.bg,
-            border: `1px solid ${COLORS.border}`,
+            backgroundColor: THEME_VARS.background,
+            border: `1px solid ${THEME_VARS.border}`,
             borderRadius: 8,
             fontSize: 12,
           }}
@@ -82,7 +82,7 @@ export default function CorrelationChart({
             `${Number(value).toFixed(1)}%`,
             `${name}月涨跌`,
           ]}
-          labelStyle={{ color: COLORS.accent }}
+          labelStyle={{ color: THEME_VARS.accent }}
         />
         <Bar dataKey="BTC" name="BTC月涨跌%" fill={COLORS.btc} legendType="none">
           {data.map((entry, index) => (

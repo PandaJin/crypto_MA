@@ -12,6 +12,7 @@ import {
 } from "lightweight-charts";
 import type { CryptoEvent } from "@/types/market";
 import { COLORS } from "@/lib/utils/constants";
+import { useThemeColors } from "@/hooks/useThemeColors";
 
 interface TooltipState {
   event: CryptoEvent;
@@ -38,6 +39,7 @@ export default function PriceVolumeChart({
   events,
   height = 420,
 }: PriceVolumeChartProps) {
+  const themeColors = useThemeColors();
   const containerRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<IChartApi | null>(null);
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
@@ -54,26 +56,26 @@ export default function PriceVolumeChart({
       height,
       layout: {
         background: { type: ColorType.Solid, color: "transparent" },
-        textColor: COLORS.muted,
+        textColor: themeColors.muted,
         fontSize: 11,
       },
       grid: {
-        vertLines: { color: COLORS.border },
-        horzLines: { color: COLORS.border },
+        vertLines: { color: themeColors.border },
+        horzLines: { color: themeColors.border },
       },
       crosshair: {
-        vertLine: { labelBackgroundColor: COLORS.accent },
-        horzLine: { labelBackgroundColor: COLORS.accent },
+        vertLine: { labelBackgroundColor: themeColors.accent },
+        horzLine: { labelBackgroundColor: themeColors.accent },
       },
       rightPriceScale: {
-        borderColor: COLORS.border,
+        borderColor: themeColors.border,
       },
       leftPriceScale: {
         visible: true,
-        borderColor: COLORS.border,
+        borderColor: themeColors.border,
       },
       timeScale: {
-        borderColor: COLORS.border,
+        borderColor: themeColors.border,
         timeVisible: false,
       },
     });
@@ -167,7 +169,7 @@ export default function PriceVolumeChart({
       observer.disconnect();
       chart.remove();
     };
-  }, [labels, prices, volumes, events, height, visibleEvents]);
+  }, [labels, prices, volumes, events, height, visibleEvents, themeColors]);
 
   return (
     <div className="flex flex-col gap-3">

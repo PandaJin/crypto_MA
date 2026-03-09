@@ -9,6 +9,7 @@ import {
   ColorType,
 } from "lightweight-charts";
 import { COLORS } from "@/lib/utils/constants";
+import { useThemeColors } from "@/hooks/useThemeColors";
 
 interface KlineItem {
   time: number;
@@ -25,6 +26,7 @@ interface KlineChartProps {
 }
 
 export default function KlineChart({ data, height = 500 }: KlineChartProps) {
+  const themeColors = useThemeColors();
   const containerRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<IChartApi | null>(null);
 
@@ -36,26 +38,26 @@ export default function KlineChart({ data, height = 500 }: KlineChartProps) {
       height,
       layout: {
         background: { type: ColorType.Solid, color: "transparent" },
-        textColor: COLORS.muted,
+        textColor: themeColors.muted,
         fontSize: 11,
       },
       grid: {
-        vertLines: { color: COLORS.border },
-        horzLines: { color: COLORS.border },
+        vertLines: { color: themeColors.border },
+        horzLines: { color: themeColors.border },
       },
       crosshair: {
-        vertLine: { labelBackgroundColor: COLORS.accent },
-        horzLine: { labelBackgroundColor: COLORS.accent },
+        vertLine: { labelBackgroundColor: themeColors.accent },
+        horzLine: { labelBackgroundColor: themeColors.accent },
       },
       rightPriceScale: {
-        borderColor: COLORS.border,
+        borderColor: themeColors.border,
       },
       leftPriceScale: {
         visible: true,
-        borderColor: COLORS.border,
+        borderColor: themeColors.border,
       },
       timeScale: {
-        borderColor: COLORS.border,
+        borderColor: themeColors.border,
         timeVisible: true,
         secondsVisible: false,
       },
@@ -120,7 +122,7 @@ export default function KlineChart({ data, height = 500 }: KlineChartProps) {
       observer.disconnect();
       chart.remove();
     };
-  }, [data, height]);
+  }, [data, height, themeColors]);
 
   if (!data || data.length === 0) {
     return (

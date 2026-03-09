@@ -9,7 +9,7 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
-import { COLORS } from "@/lib/utils/constants";
+import { COLORS, THEME_VARS } from "@/lib/utils/constants";
 
 interface EthPriceChartProps {
   labels: string[];
@@ -31,28 +31,28 @@ export default function EthPriceChart({ labels, prices }: EthPriceChartProps) {
             <stop offset="95%" stopColor={COLORS.eth} stopOpacity={0} />
           </linearGradient>
         </defs>
-        <CartesianGrid strokeDasharray="3 3" stroke={COLORS.border} />
+        <CartesianGrid strokeDasharray="3 3" stroke={THEME_VARS.border} />
         <XAxis
           dataKey="date"
-          tick={{ fontSize: 10, fill: COLORS.muted }}
+          tick={{ fontSize: 10, fill: THEME_VARS.muted }}
           tickLine={false}
           interval="preserveStartEnd"
         />
         <YAxis
-          tick={{ fontSize: 10, fill: COLORS.muted }}
+          tick={{ fontSize: 10, fill: THEME_VARS.muted }}
           tickFormatter={(v) => `$${v.toLocaleString()}`}
           tickLine={false}
           axisLine={false}
         />
         <Tooltip
           contentStyle={{
-            backgroundColor: COLORS.bg,
-            border: `1px solid ${COLORS.border}`,
+            backgroundColor: THEME_VARS.background,
+            border: `1px solid ${THEME_VARS.border}`,
             borderRadius: 8,
             fontSize: 12,
           }}
           formatter={(value) => [`$${Number(value).toLocaleString()}`, "ETH价格"]}
-          labelStyle={{ color: COLORS.accent }}
+          labelStyle={{ color: THEME_VARS.accent }}
         />
         <Area
           type="monotone"

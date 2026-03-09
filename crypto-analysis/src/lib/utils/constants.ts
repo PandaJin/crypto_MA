@@ -1,3 +1,4 @@
+/** 品牌色（不随主题变化，用于需要固定色的场景） */
 export const COLORS = {
   btc: "#f7931a",
   eth: "#627eea",
@@ -10,6 +11,16 @@ export const COLORS = {
   card: "#111827",
   border: "#1e293b",
   bg: "#0a0e17",
+} as const;
+
+/** 随系统深/浅色主题变化的 CSS 变量，用于内联样式（图表、Tooltip 等） */
+export const THEME_VARS = {
+  background: "var(--background)",
+  foreground: "var(--foreground)",
+  card: "var(--card)",
+  border: "var(--border)",
+  muted: "var(--muted)",
+  accent: "var(--accent)",
 } as const;
 
 export const EXCHANGE_COLORS: Record<string, string> = {

@@ -10,7 +10,7 @@ import {
   CartesianGrid,
   Legend,
 } from "recharts";
-import { COLORS, EXCHANGE_COLORS } from "@/lib/utils/constants";
+import { THEME_VARS, EXCHANGE_COLORS } from "@/lib/utils/constants";
 
 interface MarketShareChartProps {
   labels: string[];
@@ -44,10 +44,10 @@ export default function MarketShareChart({
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart data={data}>
-        <CartesianGrid strokeDasharray="3 3" stroke={COLORS.border} />
+        <CartesianGrid strokeDasharray="3 3" stroke={THEME_VARS.border} />
         <XAxis
           dataKey="period"
-          tick={{ fontSize: 9, fill: COLORS.muted }}
+          tick={{ fontSize: 9, fill: THEME_VARS.muted }}
           tickLine={false}
           interval={0}
           angle={-45}
@@ -55,7 +55,7 @@ export default function MarketShareChart({
           height={50}
         />
         <YAxis
-          tick={{ fontSize: 10, fill: COLORS.muted }}
+          tick={{ fontSize: 10, fill: THEME_VARS.muted }}
           tickFormatter={(v) => `${v}%`}
           domain={[0, 100]}
           tickLine={false}
@@ -63,13 +63,13 @@ export default function MarketShareChart({
         />
         <Tooltip
           contentStyle={{
-            backgroundColor: COLORS.bg,
-            border: `1px solid ${COLORS.border}`,
+            backgroundColor: THEME_VARS.background,
+            border: `1px solid ${THEME_VARS.border}`,
             borderRadius: 8,
             fontSize: 12,
           }}
           formatter={(value, name) => [`${value}%`, name]}
-          labelStyle={{ color: COLORS.accent }}
+          labelStyle={{ color: THEME_VARS.accent }}
         />
         <Legend wrapperStyle={{ fontSize: 11 }} />
         <Bar dataKey="Binance" stackId="a" fill={EXCHANGE_COLORS.binance} />

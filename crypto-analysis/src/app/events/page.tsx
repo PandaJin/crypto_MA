@@ -5,7 +5,7 @@ import { Sparkles, Loader2, CheckCircle2, ChevronDown, ChevronUp, Plus, RefreshC
 import { cn } from "@/lib/utils/cn";
 import type { CryptoEvent } from "@/types/market";
 import { useHistoricalData } from "@/hooks/useHistoricalData";
-import { COLORS } from "@/lib/utils/constants";
+import { COLORS, THEME_VARS } from "@/lib/utils/constants";
 import {
   ResponsiveContainer,
   AreaChart,
@@ -686,11 +686,11 @@ export default function EventsPage() {
                               <stop offset="95%" stopColor={COLORS.accent} stopOpacity={0} />
                             </linearGradient>
                           </defs>
-                          <CartesianGrid strokeDasharray="3 3" stroke={COLORS.border} />
-                          <XAxis dataKey="date" tick={{ fontSize: 9, fill: COLORS.muted }} />
-                          <YAxis tick={{ fontSize: 9, fill: COLORS.muted }} tickFormatter={(v) => `$${(v / 1000).toFixed(0)}K`} domain={["auto", "auto"]} />
+                          <CartesianGrid strokeDasharray="3 3" stroke={THEME_VARS.border} />
+                          <XAxis dataKey="date" tick={{ fontSize: 9, fill: THEME_VARS.muted }} />
+                          <YAxis tick={{ fontSize: 9, fill: THEME_VARS.muted }} tickFormatter={(v) => `$${(v / 1000).toFixed(0)}K`} domain={["auto", "auto"]} />
                           <Tooltip
-                            contentStyle={{ backgroundColor: COLORS.bg, border: `1px solid ${COLORS.border}`, borderRadius: 8, fontSize: 11 }}
+                            contentStyle={{ backgroundColor: THEME_VARS.background, border: `1px solid ${THEME_VARS.border}`, borderRadius: 8, fontSize: 11 }}
                             formatter={(value) => [`$${Number(value).toLocaleString()}`, "价格"]}
                           />
                           <ReferenceLine x={selectedEvent.date} stroke={COLORS.accent} strokeDasharray="3 3" label={{ value: "事件", fill: COLORS.accent, fontSize: 9 }} />

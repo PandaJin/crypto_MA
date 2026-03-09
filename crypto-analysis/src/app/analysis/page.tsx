@@ -21,7 +21,7 @@ import {
   calculateMACD,
   calculateBollinger,
 } from "@/lib/indicators";
-import { COLORS } from "@/lib/utils/constants";
+import { COLORS, THEME_VARS } from "@/lib/utils/constants";
 
 const SYMBOLS = [
   { label: "BTC", value: "BTCUSDT" },
@@ -96,7 +96,7 @@ export default function AnalysisPage() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-xl font-bold mb-1">技术指标分析</h1>
-          <p className="text-sm" style={{ color: COLORS.muted }}>
+          <p className="text-sm" style={{ color: THEME_VARS.muted }}>
             RSI / MACD / 布林带 / MVRV 多维度指标分析
           </p>
         </div>
@@ -108,9 +108,9 @@ export default function AnalysisPage() {
               className="px-4 py-1.5 rounded-lg text-sm font-medium transition-colors"
               style={{
                 backgroundColor:
-                  symbol === s.value ? COLORS.accent : COLORS.card,
-                color: symbol === s.value ? "#000" : COLORS.muted,
-                border: `1px solid ${symbol === s.value ? COLORS.accent : COLORS.border}`,
+                  symbol === s.value ? THEME_VARS.accent : THEME_VARS.card,
+                color: symbol === s.value ? "var(--accent-foreground)" : THEME_VARS.muted,
+                border: `1px solid ${symbol === s.value ? THEME_VARS.accent : THEME_VARS.border}`,
               }}
             >
               {s.label}
@@ -126,21 +126,21 @@ export default function AnalysisPage() {
               key={i}
               className="rounded-xl p-6 animate-pulse"
               style={{
-                backgroundColor: COLORS.card,
-                border: `1px solid ${COLORS.border}`,
+                backgroundColor: THEME_VARS.card,
+                border: `1px solid ${THEME_VARS.border}`,
               }}
             >
               <div
                 className="h-4 w-32 rounded mb-2"
-                style={{ backgroundColor: COLORS.border }}
+                style={{ backgroundColor: THEME_VARS.border }}
               />
               <div
                 className="h-3 w-48 rounded mb-6"
-                style={{ backgroundColor: COLORS.border }}
+                style={{ backgroundColor: THEME_VARS.border }}
               />
               <div
                 className="h-[250px] rounded"
-                style={{ backgroundColor: COLORS.border }}
+                style={{ backgroundColor: THEME_VARS.border }}
               />
             </div>
           ))}
@@ -151,8 +151,8 @@ export default function AnalysisPage() {
         <div
           className="rounded-xl p-8 text-center"
           style={{
-            backgroundColor: COLORS.card,
-            border: `1px solid ${COLORS.border}`,
+            backgroundColor: THEME_VARS.card,
+            border: `1px solid ${THEME_VARS.border}`,
             color: COLORS.danger,
           }}
         >
@@ -166,14 +166,14 @@ export default function AnalysisPage() {
           <div
             className="rounded-xl p-6"
             style={{
-              backgroundColor: COLORS.card,
-              border: `1px solid ${COLORS.border}`,
+              backgroundColor: THEME_VARS.card,
+              border: `1px solid ${THEME_VARS.border}`,
             }}
           >
             <h2 className="text-base font-semibold mb-1">
               RSI 相对强弱指数
             </h2>
-            <p className="text-xs mb-4" style={{ color: COLORS.muted }}>
+            <p className="text-xs mb-4" style={{ color: THEME_VARS.muted }}>
               衡量价格变动的速度和幅度，RSI &gt; 70 为超买区域，RSI &lt; 30
               为超卖区域
             </p>
@@ -205,32 +205,32 @@ export default function AnalysisPage() {
                 </defs>
                 <CartesianGrid
                   strokeDasharray="3 3"
-                  stroke={COLORS.border}
+                  stroke={THEME_VARS.border}
                   vertical={false}
                 />
                 <XAxis
                   dataKey="date"
-                  tick={{ fill: COLORS.muted, fontSize: 11 }}
+                  tick={{ fill: THEME_VARS.muted, fontSize: 11 }}
                   tickLine={false}
-                  axisLine={{ stroke: COLORS.border }}
+                  axisLine={{ stroke: THEME_VARS.border }}
                   interval="preserveStartEnd"
                   minTickGap={40}
                 />
                 <YAxis
                   domain={[0, 100]}
-                  tick={{ fill: COLORS.muted, fontSize: 11 }}
+                  tick={{ fill: THEME_VARS.muted, fontSize: 11 }}
                   tickLine={false}
-                  axisLine={{ stroke: COLORS.border }}
+                  axisLine={{ stroke: THEME_VARS.border }}
                   width={35}
                 />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: COLORS.bg,
-                    border: `1px solid ${COLORS.border}`,
+                    backgroundColor: THEME_VARS.background,
+                    border: `1px solid ${THEME_VARS.border}`,
                     borderRadius: "8px",
                     fontSize: 12,
                   }}
-                  labelStyle={{ color: COLORS.muted }}
+                  labelStyle={{ color: THEME_VARS.muted }}
                 />
                 <ReferenceLine
                   y={70}
@@ -273,45 +273,45 @@ export default function AnalysisPage() {
           <div
             className="rounded-xl p-6"
             style={{
-              backgroundColor: COLORS.card,
-              border: `1px solid ${COLORS.border}`,
+              backgroundColor: THEME_VARS.card,
+              border: `1px solid ${THEME_VARS.border}`,
             }}
           >
             <h2 className="text-base font-semibold mb-1">
               MACD 指数平滑异同移动平均线
             </h2>
-            <p className="text-xs mb-4" style={{ color: COLORS.muted }}>
+            <p className="text-xs mb-4" style={{ color: THEME_VARS.muted }}>
               通过快慢均线差值判断趋势方向与动量变化，柱状图由正转负为卖出信号
             </p>
             <ResponsiveContainer width="100%" height={260}>
               <ComposedChart data={macdData}>
                 <CartesianGrid
                   strokeDasharray="3 3"
-                  stroke={COLORS.border}
+                  stroke={THEME_VARS.border}
                   vertical={false}
                 />
                 <XAxis
                   dataKey="date"
-                  tick={{ fill: COLORS.muted, fontSize: 11 }}
+                  tick={{ fill: THEME_VARS.muted, fontSize: 11 }}
                   tickLine={false}
-                  axisLine={{ stroke: COLORS.border }}
+                  axisLine={{ stroke: THEME_VARS.border }}
                   interval="preserveStartEnd"
                   minTickGap={40}
                 />
                 <YAxis
-                  tick={{ fill: COLORS.muted, fontSize: 11 }}
+                  tick={{ fill: THEME_VARS.muted, fontSize: 11 }}
                   tickLine={false}
-                  axisLine={{ stroke: COLORS.border }}
+                  axisLine={{ stroke: THEME_VARS.border }}
                   width={50}
                 />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: COLORS.bg,
-                    border: `1px solid ${COLORS.border}`,
+                    backgroundColor: THEME_VARS.background,
+                    border: `1px solid ${THEME_VARS.border}`,
                     borderRadius: "8px",
                     fontSize: 12,
                   }}
-                  labelStyle={{ color: COLORS.muted }}
+                  labelStyle={{ color: THEME_VARS.muted }}
                 />
                 <Bar dataKey="histogram" name="柱状图" barSize={3}>
                   {macdData.map((entry, index) => (
@@ -348,14 +348,14 @@ export default function AnalysisPage() {
           <div
             className="rounded-xl p-6"
             style={{
-              backgroundColor: COLORS.card,
-              border: `1px solid ${COLORS.border}`,
+              backgroundColor: THEME_VARS.card,
+              border: `1px solid ${THEME_VARS.border}`,
             }}
           >
             <h2 className="text-base font-semibold mb-1">
               布林带 Bollinger Bands
             </h2>
-            <p className="text-xs mb-4" style={{ color: COLORS.muted }}>
+            <p className="text-xs mb-4" style={{ color: THEME_VARS.muted }}>
               基于标准差的价格通道，价格触及上轨可能回调，触及下轨可能反弹
             </p>
             <ResponsiveContainer width="100%" height={260}>
@@ -382,21 +382,21 @@ export default function AnalysisPage() {
                 </defs>
                 <CartesianGrid
                   strokeDasharray="3 3"
-                  stroke={COLORS.border}
+                  stroke={THEME_VARS.border}
                   vertical={false}
                 />
                 <XAxis
                   dataKey="date"
-                  tick={{ fill: COLORS.muted, fontSize: 11 }}
+                  tick={{ fill: THEME_VARS.muted, fontSize: 11 }}
                   tickLine={false}
-                  axisLine={{ stroke: COLORS.border }}
+                  axisLine={{ stroke: THEME_VARS.border }}
                   interval="preserveStartEnd"
                   minTickGap={40}
                 />
                 <YAxis
-                  tick={{ fill: COLORS.muted, fontSize: 11 }}
+                  tick={{ fill: THEME_VARS.muted, fontSize: 11 }}
                   tickLine={false}
-                  axisLine={{ stroke: COLORS.border }}
+                  axisLine={{ stroke: THEME_VARS.border }}
                   width={60}
                   domain={["auto", "auto"]}
                   tickFormatter={(v: number) =>
@@ -405,12 +405,12 @@ export default function AnalysisPage() {
                 />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: COLORS.bg,
-                    border: `1px solid ${COLORS.border}`,
+                    backgroundColor: THEME_VARS.background,
+                    border: `1px solid ${THEME_VARS.border}`,
                     borderRadius: "8px",
                     fontSize: 12,
                   }}
-                  labelStyle={{ color: COLORS.muted }}
+                  labelStyle={{ color: THEME_VARS.muted }}
                   formatter={(value) => Number(value).toLocaleString()}
                 />
                 <Area
@@ -431,7 +431,7 @@ export default function AnalysisPage() {
                   stroke={COLORS.purple}
                   strokeWidth={1}
                   strokeDasharray="4 4"
-                  fill={COLORS.card}
+                  fill={THEME_VARS.card}
                   connectNulls={false}
                   dot={false}
                 />
@@ -462,28 +462,28 @@ export default function AnalysisPage() {
           <div
             className="rounded-xl p-6"
             style={{
-              backgroundColor: COLORS.card,
-              border: `1px solid ${COLORS.border}`,
+              backgroundColor: THEME_VARS.card,
+              border: `1px solid ${THEME_VARS.border}`,
             }}
           >
             <h2 className="text-base font-semibold mb-1">
               MVRV 市值与实现价值比率
             </h2>
-            <p className="text-xs mb-4" style={{ color: COLORS.muted }}>
+            <p className="text-xs mb-4" style={{ color: THEME_VARS.muted }}>
               衡量市场整体盈亏状态的链上指标，用于判断市场周期顶部与底部
             </p>
             <div className="space-y-4 mt-2">
               <div
                 className="rounded-lg p-4"
                 style={{
-                  backgroundColor: COLORS.bg,
-                  border: `1px solid ${COLORS.border}`,
+                  backgroundColor: THEME_VARS.background,
+                  border: `1px solid ${THEME_VARS.border}`,
                 }}
               >
                 <div className="flex items-center justify-between mb-3">
                   <span
                     className="text-sm font-medium"
-                    style={{ color: COLORS.muted }}
+                    style={{ color: THEME_VARS.muted }}
                   >
                     当前 {currentSymbolLabel} MVRV 估值
                   </span>
@@ -496,7 +496,7 @@ export default function AnalysisPage() {
                 </div>
                 <div
                   className="w-full h-2 rounded-full overflow-hidden"
-                  style={{ backgroundColor: COLORS.border }}
+                  style={{ backgroundColor: THEME_VARS.border }}
                 >
                   <div
                     className="h-full rounded-full transition-all"
@@ -508,7 +508,7 @@ export default function AnalysisPage() {
                 </div>
                 <div
                   className="flex justify-between text-xs mt-1"
-                  style={{ color: COLORS.muted }}
+                  style={{ color: THEME_VARS.muted }}
                 >
                   <span>0</span>
                   <span>1</span>
@@ -530,7 +530,7 @@ export default function AnalysisPage() {
                     </p>
                     <p
                       className="text-xs mt-0.5"
-                      style={{ color: COLORS.muted }}
+                      style={{ color: THEME_VARS.muted }}
                     >
                       大部分持有者处于盈利状态，获利了结压力增大，历史上多次出现在周期顶部
                     </p>
@@ -548,7 +548,7 @@ export default function AnalysisPage() {
                     </p>
                     <p
                       className="text-xs mt-0.5"
-                      style={{ color: COLORS.muted }}
+                      style={{ color: THEME_VARS.muted }}
                     >
                       市场处于健康增长阶段，持有者整体盈利但未达极端水平
                     </p>
@@ -566,7 +566,7 @@ export default function AnalysisPage() {
                     </p>
                     <p
                       className="text-xs mt-0.5"
-                      style={{ color: COLORS.muted }}
+                      style={{ color: THEME_VARS.muted }}
                     >
                       市场价值低于实现价值，大部分持有者处于亏损状态，历史上为较好的买入时机
                     </p>
@@ -579,7 +579,7 @@ export default function AnalysisPage() {
                 style={{
                   backgroundColor: `${COLORS.accent}10`,
                   border: `1px solid ${COLORS.accent}30`,
-                  color: COLORS.muted,
+                  color: THEME_VARS.muted,
                 }}
               >
                 注：MVRV 数据为估算值，实际数据需接入 Glassnode

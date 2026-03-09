@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { cn } from "@/lib/utils/cn";
-import { COLORS } from "@/lib/utils/constants";
+import { COLORS, THEME_VARS } from "@/lib/utils/constants";
 import {
   ResponsiveContainer,
   LineChart,
@@ -192,15 +192,15 @@ export default function ScenariosPage() {
             <div className="h-[350px]">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={projection}>
-                  <CartesianGrid strokeDasharray="3 3" stroke={COLORS.border} />
+                  <CartesianGrid strokeDasharray="3 3" stroke={THEME_VARS.border} />
                   <XAxis
                     dataKey="date"
-                    tick={{ fontSize: 10, fill: COLORS.muted }}
+                    tick={{ fontSize: 10, fill: THEME_VARS.muted }}
                     tickLine={false}
                   />
                   <YAxis
                     yAxisId="btc"
-                    tick={{ fontSize: 10, fill: COLORS.muted }}
+                    tick={{ fontSize: 10, fill: THEME_VARS.muted }}
                     tickFormatter={(v) => `$${(v / 1000).toFixed(0)}K`}
                     tickLine={false}
                     axisLine={false}
@@ -208,15 +208,15 @@ export default function ScenariosPage() {
                   <YAxis
                     yAxisId="eth"
                     orientation="right"
-                    tick={{ fontSize: 10, fill: COLORS.muted }}
+                    tick={{ fontSize: 10, fill: THEME_VARS.muted }}
                     tickFormatter={(v) => `$${v.toLocaleString()}`}
                     tickLine={false}
                     axisLine={false}
                   />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: COLORS.bg,
-                      border: `1px solid ${COLORS.border}`,
+                      backgroundColor: THEME_VARS.background,
+                      border: `1px solid ${THEME_VARS.border}`,
                       borderRadius: 8,
                       fontSize: 12,
                     }}

@@ -10,7 +10,7 @@ import {
   CartesianGrid,
   Legend,
 } from "recharts";
-import { COLORS } from "@/lib/utils/constants";
+import { COLORS, THEME_VARS } from "@/lib/utils/constants";
 
 interface VolumeBreakdownChartProps {
   labels: string[];
@@ -35,23 +35,23 @@ export default function VolumeBreakdownChart({
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart data={data}>
-        <CartesianGrid strokeDasharray="3 3" stroke={COLORS.border} />
+        <CartesianGrid strokeDasharray="3 3" stroke={THEME_VARS.border} />
         <XAxis
           dataKey="date"
-          tick={{ fontSize: 10, fill: COLORS.muted }}
+          tick={{ fontSize: 10, fill: THEME_VARS.muted }}
           tickLine={false}
           interval="preserveStartEnd"
         />
         <YAxis
-          tick={{ fontSize: 10, fill: COLORS.muted }}
+          tick={{ fontSize: 10, fill: THEME_VARS.muted }}
           tickFormatter={(v) => `${v}B`}
           tickLine={false}
           axisLine={false}
         />
         <Tooltip
           contentStyle={{
-            backgroundColor: COLORS.bg,
-            border: `1px solid ${COLORS.border}`,
+            backgroundColor: THEME_VARS.background,
+            border: `1px solid ${THEME_VARS.border}`,
             borderRadius: 8,
             fontSize: 12,
           }}
@@ -59,7 +59,7 @@ export default function VolumeBreakdownChart({
             `$${value}B`,
             name === "CEX" ? "CEX现货" : name === "DEX" ? "DEX" : "OTC",
           ]}
-          labelStyle={{ color: COLORS.accent }}
+          labelStyle={{ color: THEME_VARS.accent }}
         />
         <Legend
           wrapperStyle={{ fontSize: 11 }}

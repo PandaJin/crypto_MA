@@ -7,7 +7,7 @@ import { useHistoricalData } from "@/hooks/useHistoricalData";
 import MarketShareChart from "@/components/charts/MarketShareChart";
 import VolumeBreakdownChart from "@/components/charts/VolumeBreakdownChart";
 import DexRatioChart from "@/components/charts/DexRatioChart";
-import { COLORS } from "@/lib/utils/constants";
+import { COLORS, THEME_VARS } from "@/lib/utils/constants";
 
 /* ------------------------------------------------------------------ */
 /*  Formatting helpers                                                 */
@@ -45,7 +45,7 @@ function TrustDots({ score }: { score: number }) {
           key={i}
           className="inline-block w-2 h-2 rounded-full"
           style={{
-            backgroundColor: i < clamped ? color : COLORS.border,
+            backgroundColor: i < clamped ? color : THEME_VARS.border,
           }}
         />
       ))}
@@ -63,7 +63,7 @@ function TrustDots({ score }: { score: number }) {
 function Skeleton({ className = "" }: { className?: string }) {
   return (
     <div
-      className={`animate-pulse rounded bg-[#1e293b] ${className}`}
+      className={`animate-pulse rounded bg-border ${className}`}
     />
   );
 }
@@ -136,7 +136,7 @@ export default function ExchangesPage() {
       {/* Header */}
       <div className="px-4 md:px-8 pt-6 pb-2">
         <h1 className="text-xl font-bold mb-1">交易所对比</h1>
-        <p className="text-sm" style={{ color: COLORS.muted }}>
+        <p className="text-sm" style={{ color: THEME_VARS.muted }}>
           交易所排名 / 市场份额 / DEX vs CEX | 数据来源: CoinGecko, DefiLlama
         </p>
       </div>
@@ -148,18 +148,18 @@ export default function ExchangesPage() {
         <div
           className="rounded-xl p-5 overflow-x-auto"
           style={{
-            backgroundColor: COLORS.card,
-            border: `1px solid ${COLORS.border}`,
+            backgroundColor: THEME_VARS.card,
+            border: `1px solid ${THEME_VARS.border}`,
           }}
         >
           <h2
             className="text-sm font-semibold mb-4"
-            style={{ color: COLORS.muted }}
+            style={{ color: THEME_VARS.muted }}
           >
             头部交易所排名{" "}
             <span
               className="text-[11px] font-normal"
-              style={{ color: COLORS.accent }}
+              style={{ color: THEME_VARS.accent }}
             >
               (按24小时BTC交易量排序)
             </span>
@@ -172,7 +172,7 @@ export default function ExchangesPage() {
               <thead>
                 <tr
                   className="text-left text-xs"
-                  style={{ color: COLORS.muted }}
+                  style={{ color: THEME_VARS.muted }}
                 >
                   <th className="pb-3 pr-3 font-medium">#</th>
                   <th className="pb-3 pr-3 font-medium">交易所</th>
@@ -190,7 +190,7 @@ export default function ExchangesPage() {
                     key={ex.id}
                     className="transition-colors"
                     style={{
-                      borderTop: `1px solid ${COLORS.border}`,
+                      borderTop: `1px solid ${THEME_VARS.border}`,
                     }}
                     onMouseEnter={(e) =>
                       (e.currentTarget.style.backgroundColor =
@@ -202,7 +202,7 @@ export default function ExchangesPage() {
                   >
                     <td
                       className="py-3 pr-3 font-mono text-xs"
-                      style={{ color: COLORS.muted }}
+                      style={{ color: THEME_VARS.muted }}
                     >
                       {idx + 1}
                     </td>
@@ -221,7 +221,7 @@ export default function ExchangesPage() {
                           height={24}
                           className="rounded-full"
                         />
-                        <span className="font-medium text-white">
+                        <span className="font-medium text-foreground">
                           {ex.name}
                         </span>
                       </a>
@@ -237,13 +237,13 @@ export default function ExchangesPage() {
                     </td>
                     <td
                       className="py-3 pr-3 text-xs"
-                      style={{ color: COLORS.muted }}
+                      style={{ color: THEME_VARS.muted }}
                     >
                       {ex.country || "N/A"}
                     </td>
                     <td
                       className="py-3 text-xs"
-                      style={{ color: COLORS.muted }}
+                      style={{ color: THEME_VARS.muted }}
                     >
                       {ex.year_established || "N/A"}
                     </td>
@@ -262,13 +262,13 @@ export default function ExchangesPage() {
         <div
           className="rounded-xl p-5"
           style={{
-            backgroundColor: COLORS.card,
-            border: `1px solid ${COLORS.border}`,
+            backgroundColor: THEME_VARS.card,
+            border: `1px solid ${THEME_VARS.border}`,
           }}
         >
           <h2
             className="text-sm font-semibold mb-4"
-            style={{ color: COLORS.muted }}
+            style={{ color: THEME_VARS.muted }}
           >
             头部交易所市场份额演变{" "}
             <span
@@ -298,13 +298,13 @@ export default function ExchangesPage() {
           <div
             className="rounded-xl p-5"
             style={{
-              backgroundColor: COLORS.card,
-              border: `1px solid ${COLORS.border}`,
+              backgroundColor: THEME_VARS.card,
+              border: `1px solid ${THEME_VARS.border}`,
             }}
           >
             <h2
               className="text-sm font-semibold mb-5"
-              style={{ color: COLORS.muted }}
+              style={{ color: THEME_VARS.muted }}
             >
               DEX 概览{" "}
               <span
@@ -334,13 +334,13 @@ export default function ExchangesPage() {
                   <div
                     className="rounded-lg p-4"
                     style={{
-                      backgroundColor: COLORS.bg,
-                      border: `1px solid ${COLORS.border}`,
+                      backgroundColor: THEME_VARS.background,
+                      border: `1px solid ${THEME_VARS.border}`,
                     }}
                   >
                     <div
                       className="text-[11px] mb-1"
-                      style={{ color: COLORS.muted }}
+                      style={{ color: THEME_VARS.muted }}
                     >
                       DEX 24h 总交易量
                     </div>
@@ -354,13 +354,13 @@ export default function ExchangesPage() {
                   <div
                     className="rounded-lg p-4"
                     style={{
-                      backgroundColor: COLORS.bg,
-                      border: `1px solid ${COLORS.border}`,
+                      backgroundColor: THEME_VARS.background,
+                      border: `1px solid ${THEME_VARS.border}`,
                     }}
                   >
                     <div
                       className="text-[11px] mb-1"
-                      style={{ color: COLORS.muted }}
+                      style={{ color: THEME_VARS.muted }}
                     >
                       DEX 7d 总交易量
                     </div>
@@ -376,7 +376,7 @@ export default function ExchangesPage() {
                 {/* Top 5 DEX protocols bar chart */}
                 <h3
                   className="text-xs font-medium mb-3"
-                  style={{ color: COLORS.muted }}
+                  style={{ color: THEME_VARS.muted }}
                 >
                   Top 5 DEX 协议 (24h 交易量)
                 </h3>
@@ -394,7 +394,7 @@ export default function ExchangesPage() {
                     return (
                       <div key={protocol.name}>
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-xs text-white font-medium">
+                          <span className="text-xs text-foreground font-medium">
                             {protocol.name}
                           </span>
                           <span
@@ -406,7 +406,7 @@ export default function ExchangesPage() {
                         </div>
                         <div
                           className="w-full h-2.5 rounded-full overflow-hidden"
-                          style={{ backgroundColor: COLORS.border }}
+                          style={{ backgroundColor: THEME_VARS.border }}
                         >
                           <div
                             className="h-full rounded-full transition-all duration-500"
@@ -425,7 +425,7 @@ export default function ExchangesPage() {
             ) : (
               <div
                 className="text-center py-8 text-sm"
-                style={{ color: COLORS.muted }}
+                style={{ color: THEME_VARS.muted }}
               >
                 数据加载失败
               </div>
@@ -436,13 +436,13 @@ export default function ExchangesPage() {
           <div
             className="rounded-xl p-5"
             style={{
-              backgroundColor: COLORS.card,
-              border: `1px solid ${COLORS.border}`,
+              backgroundColor: THEME_VARS.card,
+              border: `1px solid ${THEME_VARS.border}`,
             }}
           >
             <h2
               className="text-sm font-semibold mb-4"
-              style={{ color: COLORS.muted }}
+              style={{ color: THEME_VARS.muted }}
             >
               交易量构成 (CEX / DEX / OTC){" "}
               <span
@@ -476,13 +476,13 @@ export default function ExchangesPage() {
         <div
           className="rounded-xl p-5"
           style={{
-            backgroundColor: COLORS.card,
-            border: `1px solid ${COLORS.border}`,
+            backgroundColor: THEME_VARS.card,
+            border: `1px solid ${THEME_VARS.border}`,
           }}
         >
           <h2
             className="text-sm font-semibold mb-4"
-            style={{ color: COLORS.muted }}
+            style={{ color: THEME_VARS.muted }}
           >
             DEX 占总现货交易量比例趋势{" "}
             <span

@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* 深色主题（默认） */
 :root {
   --background: #0a0e17;
   --foreground: #e2e8f0;
@@ -7,6 +8,7 @@
   --border: #1e293b;
   --muted: #94a3b8;
   --accent: #f59e0b;
+  --accent-foreground: #000000;
   --btc: #f7931a;
   --eth: #627eea;
   --success: #10b981;
@@ -15,13 +17,34 @@
   --purple: #8b5cf6;
 }
 
+/* 浅色主题：Claude Desktop 风格（暖白、柔和灰），随系统 prefers-color-scheme 切换 */
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #f5f4f0;
+    --foreground: #1a1a1a;
+    --card: #fefefe;
+    --border: #e5e4e0;
+    --muted: #6b7280;
+    --accent: #c15f3c;
+    --accent-foreground: #ffffff;
+    --btc: #e07a1a;
+    --eth: #5a6fd6;
+    --success: #0d9668;
+    --danger: #dc2626;
+    --info: #2563eb;
+    --purple: #7c3aed;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
+  --color-bg: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-border: var(--border);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --color-btc: var(--btc);
   --color-eth: var(--eth);
   --color-success: var(--success);

@@ -18,8 +18,8 @@ export default function RangeSelector({ value, onChange }: RangeSelectorProps) {
           className={cn(
             "px-3 py-1.5 rounded-md border text-xs font-medium transition-all cursor-pointer",
             value === range.value
-              ? "bg-accent text-black border-accent font-semibold"
-              : "bg-card text-foreground border-border hover:bg-accent hover:text-black hover:border-accent"
+              ? "bg-accent text-accent-foreground border-accent font-semibold"
+              : "bg-card text-foreground border-border hover:bg-accent hover:text-accent-foreground hover:border-accent"
           )}
         >
           {range.label}
